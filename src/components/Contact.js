@@ -1,31 +1,46 @@
 import React from "react";
-import { Form, Button } from "react-bootstrap";
+import { useForm } from "react-hook-form";
 
 function Contact() {
+  const { register, handleSubmit, errors } = useForm();
+  const onSubmit = (data) => console.log(data.nameRequired);
+
   return (
-    <Form
+    <form
       style={{
+        display: "flex",
         flexDirection: "column",
-        marginTop: "100px",
-        marginLeft: "20px",
-        maxWidth: "500px",
+        width: "500px",
+        margin: "20px",
       }}
+      onSubmit={handleSubmit(onSubmit)}
     >
-      <Form.Label>Name</Form.Label>
-      <Form.Control placeholder="Please enter you name..." />
-      <Form.Label>Subject</Form.Label>
-      <Form.Control placeholder="Let us know what you are inquiring about..." />
-      <Form.Label>Message</Form.Label>
-      <Form.Control
-        as="textarea"
-        rows="5"
-        placeholder="Type your message here..."
+      <label>Name</label>
+      <input
+        name="nameRequired"
+        placeholder="Enter your name here..."
+        ref={register({ required: true })}
       />
-      <br />
-      <Button variant="primary" type="submit" style={{ maxWidth: "100px" }}>
-        Submit
-      </Button>
-    </Form>
+      {errors.nameRequired && <span>Please enter your name</span>}
+      <label>Subject</label>
+      <input
+        name="subjectRequired"
+        placeholder="Enter the subject you are enquiring about..."
+        ref={register({ required: true })}
+      />
+      {errors.subjectRequired && (
+        <span>Please enter the subject you are enquiring about</span>
+      )}
+      <label>Message</label>
+      <textarea
+        name="messageRequired"
+        placeholder="Enter your message here..."
+        rows={10}
+        ref={register({ required: true })}
+      />
+      {errors.messageRequired && <span>Please enter your message</span>}
+      <input type="submit" />
+    </form>
   );
 }
 
