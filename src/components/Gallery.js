@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import { Container, Row, Col, Image } from "react-bootstrap";
 import image1 from "../assets/1.jpeg";
 import image2 from "../assets/2.jpeg";
@@ -21,75 +21,91 @@ import image18 from "../assets/18.jpeg";
 import image19 from "../assets/19.jpeg";
 import image20 from "../assets/20.jpeg";
 import image21 from "../assets/21.jpeg";
+import GalleryModal from "./GalleryModal"
+import "../css/Gallery.css"
 
 function Gallery() {
+
+  const images = [image1, image2, image3, image4, image5, image6,
+    image7, image7, image8, image9, image10, image11,
+    image12, image13, image14, image15, image16, image17,
+    image18, image19, image20, image21]
+
+  const [currentModalImage, setCurrentModalImage] = useState(0);
+
+  const openModal = (currentImage) => {
+    setCurrentModalImage(currentImage)
+    document.getElementById("galleryModal").style.display = "block";
+  }
+
   return (
     <Container>
       <Row>
-        <Col xs={6} md={4}>
-          <Image src={image1} thumbnail />
+      <Col xs={6} md={4}>
+          <Image src={images[0]} onClick={ () => openModal(0) } thumbnail />
         </Col>
         <Col xs={6} md={4}>
-          <Image src={image2} thumbnail />
+          <Image src={images[1]} onClick={ () => openModal(1) } thumbnail />
         </Col>
         <Col xs={6} md={4}>
-          <Image src={image3} thumbnail />
+          <Image src={images[2]} onClick={ () => openModal(2) } thumbnail />
         </Col>
         <Col xs={6} md={4}>
-          <Image src={image4} thumbnail />
+          <Image src={images[3]} onClick={ () => openModal(3) } thumbnail />
         </Col>
         <Col xs={6} md={4}>
-          <Image src={image5} thumbnail />
+          <Image src={images[4]} onClick={ () => openModal(4) } thumbnail />
         </Col>
         <Col xs={6} md={4}>
-          <Image src={image6} thumbnail />
+          <Image src={images[5]} onClick={ () => openModal(5) } thumbnail />
         </Col>
         <Col xs={6} md={4}>
-          <Image src={image7} thumbnail />
+          <Image src={images[6]} onClick={ () => openModal(6) } thumbnail />
         </Col>
         <Col xs={6} md={4}>
-          <Image src={image8} thumbnail />
+          <Image src={images[7]} onClick={ () => openModal(7) } thumbnail />
         </Col>
         <Col xs={6} md={4}>
-          <Image src={image9} thumbnail />
+          <Image src={images[8]} onClick={ () => openModal(8) } thumbnail />
         </Col>
         <Col xs={6} md={4}>
-          <Image src={image10} thumbnail />
+          <Image src={images[9]} onClick={ () => openModal(9) } thumbnail />
         </Col>
         <Col xs={6} md={4}>
-          <Image src={image11} thumbnail />
+          <Image src={images[10]} onClick={ () => openModal(10) } thumbnail />
         </Col>
         <Col xs={6} md={4}>
-          <Image src={image12} thumbnail />
+          <Image src={images[11]} onClick={ () => openModal(11) } thumbnail />
         </Col>
         <Col xs={6} md={4}>
-          <Image src={image13} thumbnail />
+          <Image src={images[12]} onClick={ () => openModal(12) } thumbnail />
         </Col>
         <Col xs={6} md={4}>
-          <Image src={image14} thumbnail />
+          <Image src={images[13]} onClick={ () => openModal(13) } thumbnail />
         </Col>
         <Col xs={6} md={4}>
-          <Image src={image15} thumbnail />
+          <Image src={images[14]} onClick={ () => openModal(14) } thumbnail />
         </Col>
         <Col xs={6} md={4}>
-          <Image src={image16} thumbnail />
+          <Image src={images[15]} onClick={ () => openModal(15) } thumbnail />
         </Col>
         <Col xs={6} md={4}>
-          <Image src={image17} thumbnail />
+          <Image src={images[16]} onClick={ () => openModal(16) } thumbnail />
         </Col>
         <Col xs={6} md={4}>
-          <Image src={image18} thumbnail />
+          <Image src={images[17]} onClick={ () => openModal(17) } thumbnail />
         </Col>
         <Col xs={6} md={4}>
-          <Image src={image19} thumbnail />
+          <Image src={images[18]} onClick={ () => openModal(18) } thumbnail />
         </Col>
         <Col xs={6} md={4}>
-          <Image src={image20} thumbnail />
+          <Image src={images[19]} onClick={ () => openModal(19) } thumbnail />
         </Col>
         <Col xs={6} md={4}>
-          <Image src={image21} thumbnail />
+          <Image src={images[20]} onClick={ () => openModal(20) } thumbnail />
         </Col>
       </Row>
+      <GalleryModal currentSlide={currentModalImage} allSlides={images}/>
     </Container>
   );
 }

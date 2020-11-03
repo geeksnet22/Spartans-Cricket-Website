@@ -11,7 +11,12 @@ import image8 from "../assets/8.jpeg";
 
 function ImagesSlideShow() {
   return (
-    <Carousel style={{ width: "1100px" }}>
+    <Carousel
+      interval={3000}
+      controls={false}
+      pause={false}
+      style={{ width: "100%" }}
+    >
       <Carousel.Item>
         <img className="d-block w-100" src={image1} alt="First slide" />
       </Carousel.Item>

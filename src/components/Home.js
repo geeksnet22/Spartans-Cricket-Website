@@ -1,6 +1,7 @@
 import React from "react";
 import ImageSlideShow from "../components/ImagesSlideShow";
 import { Jumbotron, Container } from "react-bootstrap";
+import mainBackground from "../assets/mainBackground.jpeg";
 
 function Home() {
   return (
@@ -10,11 +11,13 @@ function Home() {
         style={{
           marginBottom: 0,
           backgroundColor: "#0041C2",
+          // backgroundImage: mainBackground,
           justifyContent: "center",
         }}
       >
         <Container
           style={{
+            backgroundImage: mainBackground,
             display: "flex",
             flexDirection: "column",
             alignContent: "center",
